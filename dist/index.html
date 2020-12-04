@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wether App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id = "general-container">
+        <div id = "header">
+            <h1>Weather App</h1>
+        </div>
+        <div id = "manager">
+            <input id = "input" type = "text" placeholder = "Search City">
+            <button id = "new-city-button">Display City</button>
+            <!-- <button id = "saved-cities-button">Display Saved Cities</button> -->
+        </div>
+        <div id = "container"></div>
+    </div>
+
+    <script id = "cities-template" type = "text/x-handlebars-template">
+        {{#each data}}
+            <div class = city>
+                <h2 class = "x">X</h2>
+                <h3 class = "city-name">{{name}}</h3>
+                <h2 class = "temperature">{{temperature}}°</h2>
+                <img src = "{{conditionPic}}"/>
+                <h3 class = "condition-text">{{condition}}</h3>
+                {{#if isSaved}}
+                    <button class = "delete">Delete From Memory</button>
+                {{else}}
+                    <button class = "save">Save In Memory</button>
+                {{/if}}
+            </div>
+        {{/each}}
+    </script>
+
+    <script src = "./node_modules/jquery/dist/jquery.js"></script>
+    <script src = "./node_modules/handlebars/dist/handlebars.js"></script>
+    <script src = "APIManager.js"></script>
+    <script src = "render.js"></script>
+    <script src = "main.js"></script>
+</body>
+</html>
