@@ -5,16 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wether App</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Quintessential&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Eagle+Lake&family=Quintessential&display=swap" rel="stylesheet">
 </head>
 <body>
     <div id = "general-container">
         <div id = "header">
-            <h1>Weather App</h1>
+            <h1 id = "title">World Weather</h1>
+            <h3 id = "sub-title">Current weather everywhere</h3>
         </div>
         <div id = "manager">
             <input id = "input" type = "text" placeholder = "Search City">
             <button id = "new-city-button">Display City</button>
-            <!-- <button id = "saved-cities-button">Display Saved Cities</button> -->
         </div>
         <div id = "container"></div>
     </div>
@@ -22,16 +25,19 @@
     <script id = "cities-template" type = "text/x-handlebars-template">
         {{#each data}}
             <div class = city>
-                <h2 class = "x">X</h2>
-                <h3 class = "city-name">{{name}}</h3>
-                <h2 class = "temperature">{{temperature}}°</h2>
-                <img src = "{{conditionPic}}"/>
-                <h3 class = "condition-text">{{condition}}</h3>
-                {{#if isSaved}}
-                    <button class = "delete">Delete From Memory</button>
-                {{else}}
-                    <button class = "save">Save In Memory</button>
-                {{/if}}
+                <img class = "city-picture" src = "{{picture}}"/>
+                    <h2 class = "x">X</h2>
+                    <h3 class = "city-name">{{name}}</h3>
+                <div class = "city-bottom">
+                    <h2 class = "temperature">{{temperature}}°</h2>
+                    <img class = "condition-image" src = "{{conditionPic}}"/>
+                    <h3 class = "condition-text">{{condition}}</h3>
+                    {{#if isSaved}}
+                        <button class = "delete">Delete From Memory</button>
+                    {{else}}
+                        <button class = "save">Save In Memory</button>
+                    {{/if}}
+                </div>
             </div>
         {{/each}}
     </script>

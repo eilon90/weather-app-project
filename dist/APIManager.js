@@ -8,7 +8,7 @@ class APIManager {
         cities.forEach(c => {
             if (this.cityData.every(d => d.name !== c.name)) {
                 c.isSaved = true;
-                this.cityData.push(c);
+                this.cityData.unshift(c);
             }
         })
         return this.cityData;
@@ -18,8 +18,7 @@ class APIManager {
         const cityName = name.charAt(0).toUpperCase() + name.substr(1).toLowerCase();
         const city = await $.get(`/city/${cityName}`);
         if (city.error === true) {
-            console.log("We couldn't find this name. please make sure you spell it correctly");
-            return;
+            return 'error';
         }
         city.isSaved = false;
         if (this.cityData.some(c => c.name === city.name)) {
@@ -27,23 +26,25 @@ class APIManager {
             this.cityData.splice(cityPlace, 1, city);
         }
         else {
-            this.cityData.push(city);
+            this.cityData.unshift(city);
         }
         return this.cityData;
     }
 
-    async saveCity(cityName) {
-        const city = this.cityData.find(c => c.name === cityName);
-        await $.post('/city', city);
-        this.cityData.find(c => c.name === cityName).isSaved = true;
+    async saveCity(name, picture) {
+        const cityName = name.split(',')[0];
+        const data = {name: cityName, picture: picture}
+        await $.post('/city', data);
+        this.cityData.find(c => c.name === name).isSaved = true;
     }
 
-    removeCity(cityName) {
+    removeCity(name) {
+        const cityName = name.split(',')[0];
         $.ajax({
             method: 'DELETE',
             url: `/city/${cityName}`,
             success: res => {
-                this.cityData.find(c => c.name === cityName).isSaved = false;
+                this.cityData.find(c => c.name === name).isSaved = false;
                 console.log(`${cityName} deleted`);
             },
             error: function(xhr, text, error) {
@@ -56,10 +57,6 @@ class APIManager {
         const cityPlace = this.cityData.indexOf(this.cityData.find(c => c.name === cityName));
         this.cityData.splice(cityPlace, 1);
         return this.cityData;        
-    }
-
-    refreshData() {
-        
     }
 }
 
