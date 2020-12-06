@@ -1,7 +1,6 @@
 {
   "name": "weather-app",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -20,5 +19,15 @@
     "jquery": "^3.5.1",
     "mongoose": "^5.11.1",
     "urllib": "^2.36.1"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eilon90/weather-app-project.git"
+  },
+  "bugs": {
+    "url": "https://github.com/eilon90/weather-app-project/issues"
+  },
+  "homepage": "https://github.com/eilon90/weather-app-project#readme",
+  "description": ""
 }
