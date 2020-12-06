@@ -4,12 +4,13 @@ const app = express();
 const api = require('./server/routes/api');
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/weather', {useNewUrlParser: true});
+mongoose.connect(process.env.MONGODB_URI||'mongodb://localhost/yourDB');
+
 
 app.use('/', api);
 app.use(express.static(path.join(__dirname, 'dist')));
 
-const port = 3000;
-app.listen(port, function() {
-    console.log(`Running on port ${port}`);
+const PORT = 3000;
+app.listen(process.env.PORT || PORT, function() {
+    console.log(`Running`);
 })
