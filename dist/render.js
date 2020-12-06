@@ -7,35 +7,11 @@ class Renderer {
         const newHTML = template({data});
         $('#container').append(newHTML);
     }
+
+    noCity() {
+        $('#manager').append($(`<h3 id = "no-city">We couldn't find this name. please make sure you spell it correctly</h3>`));
+        setTimeout(function() {
+            $('#no-city').remove();
+        }, 4000);
+    }
 }
-
-// renderData(data) {
-//     $('#container').empty();
-//     data.forEach(d => {
-//         const source = $('#cities-template').html();
-//         const template = Handlebars.compile(source);
-//         const newHTML = template(d);
-//         if (d.isSaved === false) {
-//             $(this).find('.save/delete').css('color', 'red');
-//         }
-//         $('#container').append(newHTML);
-//     })
-// }
-
-
-
-
-
-
-
-
-// const source = $('#cities-template').html();
-// const template = Handlebars.compile(source);
-// const newHTML = template({
-//     condition: "clear sky",
-//     conditionPic: "http://openweathermap.org/img/wn/01d@2x.png",
-//     isSaved: true,
-//     name: "Haifa, Israel",
-//     temperature: 21.3
-// });
-// $('#container').append(newHTML);
