@@ -26,11 +26,11 @@
         {{#each data}}
             <div class = city>
                 <img class = "city-picture" src = "{{picture}}"/>
-                    <h2 class = "x">X</h2>
+                    <div class = "x">X</div>
                     <h3 class = "city-name">{{name}}</h3>
                 <div class = "city-bottom">
-                    <h2 class = "temperature">{{temperature}}°</h2>
                     <img class = "condition-image" src = "{{conditionPic}}"/>
+                    <h2 class = "temperature">{{temperature}}°</h2>
                     <h3 class = "condition-text">{{condition}}</h3>
                     {{#if isSaved}}
                         <button class = "delete">Delete From Memory</button>
